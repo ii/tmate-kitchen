@@ -1,0 +1,18 @@
+description "tmate"
+
+respawn
+respawn limit 10000 30
+kill timeout 5
+
+setuid root
+setgid root
+
+script
+  cd <%= @app_path %>
+  echo $$ > /var/run/tmate.pid
+  exec ./tmate-slave -l <%= @log_path %>/tmate.log -k <%= @keys_dir %> -p <%= @listen_port %>
+end script
+
+post-stop script
+  rm -f /var/run/tmate.pid
+end script

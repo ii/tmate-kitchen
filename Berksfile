@@ -1,0 +1,23 @@
+site :opscode
+
+cookbook 'ntp'
+cookbook 'graphite',       :git => 'git://github.com/nviennot/cookbook-graphite.git'
+cookbook 'collectd',       :git => 'git://github.com/coderanger/chef-collectd.git'
+cookbook 'statsd',         :git => 'git://github.com/hectcastro/chef-statsd.git'
+cookbook 'rvm',            :git => 'git://github.com/fnichol/chef-rvm.git'
+cookbook 'user',           :git => 'git://github.com/fnichol/chef-user.git'
+cookbook 'timezone',       :git => 'git://github.com/dragonsmith/chef-timezone.git'
+cookbook 'root_ssh_agent', :git => 'git://github.com/dergachev/chef_root_ssh_agent.git'
+cookbook 'nginx',          :git => 'git://github.com/opscode-cookbooks/nginx.git'
+cookbook 'logrotate',      :git => 'git://github.com/opscode-cookbooks/logrotate.git'
+
+cookbook 'base',              :path => 'site-cookbooks/base'
+cookbook 'hosts',             :path => 'site-cookbooks/hosts'
+cookbook 'collectd_graphite', :path => 'site-cookbooks/collectd_graphite'
+cookbook 'ruby',              :path => 'site-cookbooks/ruby'
+cookbook 'apache_auth',       :path => 'site-cookbooks/apache_auth'
+cookbook 'iptables',          :path => 'site-cookbooks/iptables'
+cookbook 'time',              :path => 'site-cookbooks/time'
+cookbook 'tmate',             :path => 'site-cookbooks/tmate'
+cookbook 'tmate_nginx',       :path => 'site-cookbooks/tmate_nginx'
+cookbook 'ssh_port',          :path => 'site-cookbooks/ssh_port'

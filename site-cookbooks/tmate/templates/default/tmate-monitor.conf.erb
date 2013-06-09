@@ -1,0 +1,15 @@
+description "tmate-monitor"
+
+respawn
+respawn limit 10000 30
+kill timeout 5
+
+env APP_PATH="<%= @app_path %>/monitor"
+env RVM_ENV="<%= @rvm_env %>"
+
+# running as root, not great
+
+script
+  cd $APP_PATH
+  exec /usr/local/rvm/bin/rvm-exec $RVM_ENV bundle exec ./monitor.rb
+end script

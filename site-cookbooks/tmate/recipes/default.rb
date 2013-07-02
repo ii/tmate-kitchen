@@ -16,9 +16,8 @@ git node[:tmate][:app_path] do
 end
 
 bash "compile tmate" do
-  action :nothing
   cwd node[:tmate][:app_path]
-  code "./autogen.sh && ./configure && make"
+  code "./autogen.sh && ./configure --enable-debug && make"
 end
 
 bash "bundle monitor" do

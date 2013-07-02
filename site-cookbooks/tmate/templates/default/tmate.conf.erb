@@ -10,7 +10,7 @@ setgid root
 script
   cd <%= @app_path %>
   echo $$ > /var/run/tmate.pid
-  exec ./tmate-slave -l <%= @log_path %>/tmate.log -k <%= @keys_dir %> -p <%= @listen_port %>
+  exec ./tmate-slave -l <%= @log_path %>/tmate.log -k <%= @keys_dir %> -p <%= @listen_port %> -v
 end script
 
 post-stop script

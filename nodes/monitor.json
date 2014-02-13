@@ -1,10 +1,10 @@
 {
   "run_list": [
     "recipe[hosts]",
-    "recipe[base]",
-    "recipe[time]",
-    "recipe[iptables]",
-    "role[graphite]"
+    // "recipe[base]",
+    // "recipe[time]",
+    "recipe[iptables]"
+    // "role[graphite]"
   ],
 
   "apache_auth": [{
@@ -14,11 +14,19 @@
     "password": "password"
   }],
 
+  "iptables": {
+    "services": {
+      "ssh": 22,
+      "apache": 80
+    }
+  },
+
   "set_fqdn": "monitor",
   "hosts": {
     "monitor": "192.241.130.151",
     "sf": "192.241.193.106",
     "ny": "192.241.130.94",
-    "am": "82.196.12.126"
+    "am": "82.196.12.126",
+    "sg": "128.199.246.194"
   }
 }

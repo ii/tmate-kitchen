@@ -34,9 +34,6 @@ end
 
   git "#{Dir.home}/.#{pkg}" do
     repository "git://github.com/nviennot/#{pkg}-config.git"
-    revision = pkg == 'vim' ? 'wip-sid' : 'master'
-    revision revision
-
     action :sync
     notifies :run, "bash[install_#{pkg}]", :immediately
   end

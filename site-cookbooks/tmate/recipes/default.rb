@@ -9,7 +9,7 @@ package "zlib1g-dev"
 rvm_env = "ruby-1.9.3-p327@tmate" # will be removed eventually
 
 git node[:tmate][:app_path] do
-  repository "git@github.com:nviennot/tmate-slave.git"
+  repository "https://github.com/nviennot/tmate-slave.git"
   action :sync
   notifies :run, "bash[compile tmate]", :immediately
   notifies :run, "bash[bundle monitor]", :immediately

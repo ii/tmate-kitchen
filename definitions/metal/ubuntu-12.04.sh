@@ -19,4 +19,4 @@ sudo update-alternatives --set gem /usr/bin/gem1.9.1
 
 # Installing chef & Puppet
 gem install chef puppet --no-ri --no-rdoc
-' | ssh root@$HOST bash -s
+' | ssh -p222 root@$HOST bash -s

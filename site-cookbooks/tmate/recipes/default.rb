@@ -6,8 +6,6 @@ package "libncurses-dev"
 package "libssl-dev"
 package "zlib1g-dev"
 
-rvm_env = "ruby-1.9.3-p327@tmate" # will be removed eventually
-
 git node[:tmate][:app_path] do
   repository "https://github.com/nviennot/tmate-slave.git"
   action :sync
@@ -23,7 +21,7 @@ end
 bash "bundle monitor" do
   #action :nothing
   cwd "#{node[:tmate][:app_path]}/monitor"
-  code "/usr/local/rvm/bin/rvm-exec #{rvm_env} bundle install"
+  code "/usr/local/rvm/bin/rvm-exec #{node[:tmate][:rvm_env]} bundle install"
 end
 
 directory node[:tmate][:log_path] do
@@ -51,7 +49,7 @@ template '/etc/init/tmate-monitor.conf' do
   owner 'root'
   mode '0644'
   variables :app_path => node[:tmate][:app_path],
-            :rvm_env  => rvm_env
+            :rvm_env  => node[:tmate][:rvm_env]
 end
 
 service "tmate-monitor" do

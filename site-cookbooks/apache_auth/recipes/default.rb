@@ -6,11 +6,13 @@ node[:apache_auth].each do |auth|
     password auth[:password]
   end
 
-  template auth[:htaccess_file] do
-    source "htaccess.erb"
-    owner "root"
-    mode "0644"
-    variables :htpasswd_file => auth[:htpasswd_file],
-              :user          => auth[:user]
+  if auth[:htaccess_file]
+    template auth[:htaccess_file] do
+      source "htaccess.erb"
+      owner "root"
+      mode "0644"
+      variables :htpasswd_file => auth[:htpasswd_file],
+                :user          => auth[:user]
+    end
   end
 end

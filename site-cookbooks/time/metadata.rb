@@ -1,4 +1,4 @@
 name "time"
 
 depends "ntp"
-depends "timezone"
+depends "timezone_lwrp"

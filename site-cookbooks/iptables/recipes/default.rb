@@ -5,16 +5,14 @@ simple_iptables_rule "connected" do
   jump "ACCEPT"
 end
 
-hosts = node[:iptables][:trusted_ips].dup
+hosts = node[:iptables][:trusted_ips].each.to_a
 # Fall back to hosts definitions
 hosts += node[:hosts].values
 hosts << '127.0.0.1'
 
-hosts.uniq.each do |ip|
-  simple_iptables_rule "trusted_ips" do
-    rule "--proto all --src #{ip}"
-    jump "ACCEPT"
-  end
+simple_iptables_rule "trusted_ips" do
+  rule hosts.uniq.map { |ip| "--proto all --src #{ip}" }
+  jump "ACCEPT"
 end
 
 node[:iptables][:services].each do |service, port|

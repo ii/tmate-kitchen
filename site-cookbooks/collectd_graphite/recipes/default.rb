@@ -1,12 +1,3 @@
-apt_repository "collectd5" do
-  uri 'http://ppa.launchpad.net/raravena80/collectd5/ubuntu'
-  distribution node['lsb']['codename']
-  components ['main']
-  keyserver 'keyserver.ubuntu.com'
-  key "792BD34E"
-  action :add
-end
-
 include_recipe "collectd"
 
 collectd_plugin "cpu"

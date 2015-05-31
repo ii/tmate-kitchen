@@ -29,12 +29,9 @@ class Graph
   def cpu
     {
       title: "CPU",
-      target: [
-        "alias(scale(color(derivative(sumSeries(collectd.*.cpu.*.cpu.system)), 'red'),   0.001), 'system')",
-        "alias(scale(color(derivative(sumSeries(collectd.*.cpu.*.cpu.user)),   'blue'),  0.001), 'user')",
-        "alias(scale(color(derivative(sumSeries(collectd.*.cpu.*.cpu.wait)),   'gray'),  0.001), 'iowait')",
-        "alias(scale(color(derivative(sumSeries(collectd.*.cpu.*.cpu.nice)),   'green'), 0.001), 'nice')",
-      ],
+      target: %w(steal system user wait nice).zip(%w(white red blue gray green)).map do |what, color|
+        "alias(scale(color(derivative(sumSeries(keepLastValue(collectd.*.cpu.*.cpu.#{what}, 10))), '#{color}'), 0.001), '#{what}')"
+      end,
       areaMode: "stacked",
       yMin: "0",
       yMax: "2",
@@ -52,8 +49,8 @@ class Graph
     {
       title: "Net",
       target: [
-        "alias(scaleToSeconds(derivative(sumSeries(collectd.*.interface.eth0.if_octets.rx)),1),'RX')",
-        "alias(scaleToSeconds(derivative(sumSeries(collectd.*.interface.eth0.if_octets.tx)),1),'TX')"
+        "alias(scaleToSeconds(derivative(sumSeries(keepLastValue(collectd.*.interface.eth0.if_octets.rx, 10))),1),'RX')",
+        "alias(scaleToSeconds(derivative(sumSeries(keepLastValue(collectd.*.interface.eth0.if_octets.tx, 10))),1),'TX')"
       ],
       yMin: "0",
     }

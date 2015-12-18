@@ -20,12 +20,13 @@ end
 bash "compile tmate" do
   cwd node[:tmate_slave][:app_path]
   code "./autogen.sh && ./configure --enable-debug && make"
+  action :nothing
 end
 
 bash "bundle monitor" do
-  #action :nothing
   cwd "#{node[:tmate_slave][:app_path]}/monitor"
   code "/usr/local/rvm/bin/rvm-exec #{node[:tmate_slave][:rvm_env]} bundle install"
+  action :nothing
 end
 
 template '/etc/init/tmate-slave.conf' do

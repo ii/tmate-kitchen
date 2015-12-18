@@ -27,6 +27,12 @@ DEPENDENCIES
     git: git://github.com/miketheman/nginx.git
     revision: e36944b0dac1f21044a4f0d01fc566023325cfde
   ntp
+  postgresql
+    git: git://github.com/hw-cookbooks/postgresql.git
+    revision: 6584a0c05572b52992723705a4afc827e63016ba
+  redis
+    git: git://github.com/miah/chef-redis.git
+    revision: 24bb91e9a580091b2ddeaeaf4eaa6d5b6b4f2cb0
   ruby
     path: site-cookbooks/ruby
   rvm
@@ -42,8 +48,12 @@ DEPENDENCIES
     revision: 0aa2f30b09815b806ad49889fd25746b48420982
   tmate
     path: site-cookbooks/tmate
+  tmate_master
+    path: site-cookbooks/tmate_master
   tmate_nginx
     path: site-cookbooks/tmate_nginx
+  tmate_proxy
+    path: site-cookbooks/tmate_proxy
   user
     git: git://github.com/fnichol/chef-user.git
     revision: a738ee2abd8b198995c2c6fd9734bc3d6bd31036
@@ -65,12 +75,14 @@ GRAPH
   bluepill (2.3.1)
     rsyslog (>= 0.0.0)
   build-essential (2.2.3)
+  chef-sugar (3.2.0)
   chef_gem (0.1.0)
   chef_handler (1.1.9)
   collectd (1.0.0)
   collectd_graphite (0.0.0)
     apt (>= 0.0.0)
     collectd (>= 0.0.0)
+  discovery (0.2.2)
   dmg (2.2.2)
   git (4.2.2)
     build-essential (>= 0.0.0)
@@ -121,10 +133,22 @@ GRAPH
     yum-epel (>= 0.0.0)
   ntp (1.8.6)
   ohai (2.0.1)
+  openssl (4.4.0)
+    chef-sugar (>= 3.1.1)
   packagecloud (0.0.18)
+  postgresql (3.4.24)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (~> 4.0)
   python (1.4.6)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
+  redis (2.1.1)
+    build-essential (>= 0.0.0)
+    discovery (>= 0.2.0)
+    runit (>= 0.0.0)
+    stunnel (>= 2.0.0)
+    yum (>= 0.0.0)
   rsyslog (2.0.0)
   ruby (0.0.0)
     git (>= 0.0.0)
@@ -139,14 +163,17 @@ GRAPH
     git (>= 0.0.0)
     nodejs (>= 0.0.0)
     runit (>= 0.0.0)
+  stunnel (2.1.0)
   time (0.0.0)
     ntp (>= 0.0.0)
     timezone_lwrp (>= 0.0.0)
   timezone_lwrp (0.1.6)
   tmate (0.0.0)
     logrotate (>= 0.0.0)
+  tmate_master (0.0.0)
   tmate_nginx (0.0.0)
     nginx (>= 0.0.0)
+  tmate_proxy (0.0.0)
   user (0.4.2)
   windows (1.37.0)
     chef_handler (>= 0.0.0)

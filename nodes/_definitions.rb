@@ -21,6 +21,11 @@ module NodeDefinitions
         am1: '128.199.33.62',
         fk1: '46.101.184.80',
         sg1: '128.199.246.194',
+
+        db:      "45.55.37.189",
+        redis:   "45.55.37.189",
+        master1: "45.55.37.189",
+        ny2:     "104.236.9.236",
       },
     }
   end
@@ -47,6 +52,26 @@ module NodeDefinitions
       iptables: { services: { tmate: 22, ssh: 222, nginx: 80 } } }
   end
   %w(am1 sf1 ny1 sg1 fk1 ln1).each { |host| alias_method host, :shared_app }
+
+  def master
+    { run_list: ["role[collectd_graphite]",
+                 "role[redis]",
+                 "role[postgresql]",
+                 "recipe[tmate_master]"],
+      iptables: { services: { http: 80, https: 443 } } }
+  end
+  alias_method :master1, :master
+
+  def proxy
+    { run_list: ["recipe[ruby]",
+                 "role[collectd_graphite]",
+                 "recipe[tmate_nginx]",
+                 "recipe[tmate_proxy]",
+                 "recipe[tmate]"],
+      ssh_port: 222,
+      iptables: { services: { tmate: 22, ssh: 222, http: 80, https: 443 } } }
+  end
+  alias_method :ny2, :proxy
 
   def config_for(node, options = {})
     config = common

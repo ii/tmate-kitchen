@@ -6,8 +6,12 @@ package "libncurses-dev"
 package "libssl-dev"
 package "zlib1g-dev"
 
+include_recipe "tmate::msgpack"
+include_recipe "tmate::libssh"
+
 git node[:tmate][:app_path] do
-  repository "https://github.com/nviennot/tmate-slave.git"
+  repository "https://github.com/tmate-io/tmate-slave.git"
+  revision 'dev'
   action :sync
   notifies :run, "bash[compile tmate]", :immediately
   notifies :run, "bash[bundle monitor]", :immediately

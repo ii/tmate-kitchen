@@ -5,32 +5,27 @@ require './nodes/_definitions'
 
 options = {}
 op = OptionParser.new do |opts|
-  opts.banner = "Usage: deploy.rb what node_name [options]"
+  opts.banner = "Usage: deploy_erlang.rb node_name [options]"
 
-  opts.on("-o", "--only REGEXP", "only") do |o|
-    options[:only] = Regexp.new(o)
+  opts.on("-b", "--bootstrap", "bootstrap only") do
+    options[:bootstrap] = true
   end
 
-  opts.on("-c", "--skip-common", "skip common") do
-    options[:skip_common] = true
+  opts.on("-v", "--version VERSION", "version") do |v|
+    options[:version] = v
   end
 
-  opts.on("-p", "--skip-prepare", "skip prepare") do
-    options[:skip_prepare] = true
-  end
-
-  opts.on("-s", "--secret WHAT", "upload secret") do |what|
-    options[:upload_secret] = what
+  opts.on("-w", "--what WHAT", "what") do |what|
+    options[:what] = what
   end
 end
 op.parse!
 
-what = ARGV[0]
-node = ARGV[1]
-if ARGV.size != 2
+if ARGV.empty?
   puts op.help
   exit
 end
+node = ARGV[0]
 
 json_file = "nodes/#{node}.json"
 node_def = NodeDefinitions.config_for(node, options)
@@ -38,17 +33,38 @@ node_ip = node_def['hosts'][node]
 node_ssh_port = node_def[:ssh_port] || 22
 File.write(json_file, JSON.pretty_generate(node_def))
 
+whats = []
+whats << 'master' if node_def['run_list'].grep(/tmate_master/).any?
+whats << 'proxy'  if node_def['run_list'].grep(/tmate_proxy/).any?
+
+what = options[:what] || whats.first
+
+versions = Dir["../tmate-#{what}/rel/tmate/releases/*.*.*"].map { |v| Gem::Version.new(v.split('/').last) }.sort
+version = options[:version] || versions.last.to_s
+
 cmd = []
+run_script = nil
 
-cmd << "rsync -avzP -e 'ssh -p#{node_ssh_port}' ../tmate-#{what}/rel/tmate/releases/0.0.1/tmate.tar.gz root@#{node_ip}:/tmp/tmate-#{what}.tar.gz"
+if options[:bootstrap]
+  cmd << "rsync -avzP -e 'ssh -p#{node_ssh_port}' ../tmate-#{what}/rel/tmate/releases/#{version}/tmate.tar.gz root@#{node_ip}:/tmp/tmate-#{what}.tar.gz"
 
-install_script = <<-SCRIPT
-#!/bin/bash
-set -e
-cd /srv/tmate-#{what}
-tar xf /tmp/tmate-#{what}.tar.gz
-SCRIPT
+  run_script = <<-SCRIPT
+  #!/bin/bash
+  set -e
+  cd /srv/tmate-#{what}
+  tar xf /tmp/tmate-#{what}.tar.gz
+  SCRIPT
+else
+  cmd << "rsync -avzP -e 'ssh -p#{node_ssh_port}' ../tmate-#{what}/rel/tmate/releases/#{version}/tmate.tar.gz root@#{node_ip}:/srv/tmate-#{what}/releases/#{version}/"
 
-cmd << "echo '#{install_script}' | ssh -p#{node_ssh_port} root@#{node_ip} bash -s"
+  run_script = <<-SCRIPT
+  #!/bin/bash
+  set -e
+  cd /srv/tmate-#{what}
+  bin/tmate upgrade #{version}
+  SCRIPT
+end
+
+cmd << "echo '#{run_script}' | ssh -p#{node_ssh_port} root@#{node_ip} bash -s"
 
 exec(cmd.join(' && '))

@@ -1,3 +1,0 @@
-name "tmate"
-
-depends "logrotate"

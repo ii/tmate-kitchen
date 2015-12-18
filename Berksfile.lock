@@ -19,7 +19,7 @@ DEPENDENCIES
     path: site-cookbooks/iptables
   logrotate
     git: git://github.com/opscode-cookbooks/logrotate.git
-    revision: e500028f1a7966bc23ebb0cdd4c00f2afbbc7b14
+    revision: 55ca37a145a8c110b66bed3827e254bccf996810
   memcached
     git: git://github.com/opscode-cookbooks/memcached.git
     revision: 58e9e8fcd259c3114d532186b788d22b08f06a62
@@ -46,14 +46,14 @@ DEPENDENCIES
   timezone_lwrp
     git: git://github.com/dragonsmith/chef-timezone.git
     revision: 0aa2f30b09815b806ad49889fd25746b48420982
-  tmate
-    path: site-cookbooks/tmate
   tmate_master
     path: site-cookbooks/tmate_master
   tmate_nginx
     path: site-cookbooks/tmate_nginx
   tmate_proxy
     path: site-cookbooks/tmate_proxy
+  tmate_slave
+    path: site-cookbooks/tmate_slave
   user
     git: git://github.com/fnichol/chef-user.git
     revision: a738ee2abd8b198995c2c6fd9734bc3d6bd31036
@@ -113,7 +113,7 @@ GRAPH
   iptables (0.0.0)
     simple_iptables (>= 0.0.0)
   java (1.31.0)
-  logrotate (1.9.1)
+  logrotate (1.9.2)
   memcached (1.7.3)
     runit (~> 1.0)
     yum (~> 3.0)
@@ -168,12 +168,12 @@ GRAPH
     ntp (>= 0.0.0)
     timezone_lwrp (>= 0.0.0)
   timezone_lwrp (0.1.6)
-  tmate (0.0.0)
-    logrotate (>= 0.0.0)
   tmate_master (0.0.0)
   tmate_nginx (0.0.0)
     nginx (>= 0.0.0)
   tmate_proxy (0.0.0)
+  tmate_slave (0.0.0)
+    build-essential (>= 0.0.0)
   user (0.4.2)
   windows (1.37.0)
     chef_handler (>= 0.0.0)

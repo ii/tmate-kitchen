@@ -1,4 +1,4 @@
-description "tmate"
+description "tmate-slave"
 
 start on runlevel [2345]
 stop on runlevel [!2345]
@@ -12,10 +12,5 @@ setgid root
 
 script
   cd <%= @app_path %>
-  echo $$ > /var/run/tmate.pid
   exec ./tmate-slave -k <%= @keys_dir %> -h <%= @hostname %> -p <%= @listen_port %> -v -x localhost
-end script
-
-post-stop script
-  rm -f /var/run/tmate.pid
 end script

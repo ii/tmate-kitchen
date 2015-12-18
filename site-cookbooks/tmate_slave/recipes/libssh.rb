@@ -12,7 +12,7 @@ end
 
 execute "install-libssh" do
   cwd libssh_src_dir
-  command "mkdir -p build && cd build && cmake .. && make && make install"
+  command "mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_EXAMPLES=OFF -DWITH_SFTP=OFF .. && make && make install"
   action :nothing
 end
 

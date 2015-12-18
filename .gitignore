@@ -15,4 +15,4 @@ iso
 *.box
 logs
 nodes/*.json
-keys
+secret_files

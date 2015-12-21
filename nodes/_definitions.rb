@@ -27,6 +27,10 @@ module NodeDefinitions
         ny2:     "104.236.9.236",
         am2:     "188.226.143.183",
         sf2:     "159.203.237.156",
+        fk2:     "46.101.170.73",
+        to2:     "159.203.36.122",
+        sg2:     "188.166.217.223",
+        ln2:     "46.101.84.153",
       },
     }
   end
@@ -72,7 +76,7 @@ module NodeDefinitions
       ssh_port: 222,
       iptables: { services: { tmate: 22, ssh: 222, http: 80, https: 443 } } }
   end
-  %w(am2 sf2 ny2 sg2 fk2 ln2).each { |host| alias_method host, :proxy }
+  %w(am2 sf2 ny2 sg2 fk2 ln2 to2).each { |host| alias_method host, :proxy }
 
   def config_for(node, options = {})
     config = common

@@ -4,7 +4,12 @@ require './nodes/_definitions'
 
 class Graph
   def initialize
-    @hosts = NodeDefinitions.common[:hosts].keys.reject { |h| h == :monitor }
+    @hosts = NodeDefinitions.common[:hosts]
+               .to_a
+               .uniq { |k,v| v }
+               .map { |k,v| k }
+               .reject { |h| h == :monitor }
+               .reject { |h| h == :master1 }
   end
 
   def colors
@@ -15,6 +20,7 @@ class Graph
       am: "#23e909",
       fk: "#c03300",
       ln: "#00c0c0",
+      to: "#ffffff",
     }
   end
 

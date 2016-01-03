@@ -11,7 +11,7 @@ include_recipe "tmate_slave::libssh"
 
 git node[:tmate_slave][:app_path] do
   repository "https://github.com/tmate-io/tmate-slave.git"
-  revision 'dev'
+  revision 'master'
   action :sync
   notifies :run, "bash[compile tmate]", :immediately
   notifies :run, "bash[bundle monitor]", :immediately

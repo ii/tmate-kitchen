@@ -2,6 +2,11 @@ directory "#{node[:tmate_proxy][:app_path]}/running-config" do
   recursive true
 end
 
+# for edeliver and our failure to name our app properly
+link "#{node[:tmate_proxy][:app_path]}/tmate" do
+  to '.'
+end
+
 template "#{node[:tmate_proxy][:app_path]}/running-config/vm.args" do
   source 'vm.args.erb'
   owner 'root'

@@ -1,0 +1,1357 @@
+{
+  "revision_id": "1d13c4bb78b679b31abd85caec257075824ab679c409ba5542a5c4fa1e0d3712",
+  "name": "tmate_monitor",
+  "run_list": [
+    "recipe[hosts::default]",
+    "recipe[base::default]",
+    "recipe[time::default]",
+    "recipe[iptables::default]",
+    "recipe[apache_auth::default]",
+    "recipe[graphite_all::default]"
+  ],
+  "cookbook_locks": {
+    "ntp": {
+      "version": "1.10.1",
+      "identifier": "6d2a0b4f54afef34560557422894df59eefaf499",
+      "dotted_decimal_identifier": "30727000525418479.14731279727732884.245577354507417",
+      "cache_key": "ntp-1.10.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ntp/versions/1.10.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ntp/versions/1.10.1/download",
+        "version": "1.10.1"
+      }
+    },
+    "graphite": {
+      "version": "1.0.4",
+      "identifier": "2051f4099bc5926ed8eeb341b4cb19fc31c92dd3",
+      "dotted_decimal_identifier": "9097307829814674.31200767159416011.28570957721043",
+      "cache_key": "graphite-6d9ba44e73a799c4e9d6a46b7f1997efa464f8b2",
+      "origin": "git://github.com/hw-cookbooks/graphite.git",
+      "source_options": {
+        "git": "git://github.com/hw-cookbooks/graphite.git",
+        "revision": "6d9ba44e73a799c4e9d6a46b7f1997efa464f8b2"
+      }
+    },
+    "collectd": {
+      "version": "1.0.0",
+      "identifier": "ccade05d6b8abf6568302d84a49156d668bc7679",
+      "dotted_decimal_identifier": "57612074400582335.28543528779162769.95478880171641",
+      "cache_key": "collectd-f0f1d680d09c12166ea19083c3ffe4e07aa18e99",
+      "origin": "git://github.com/coderanger/chef-collectd.git",
+      "source_options": {
+        "git": "git://github.com/coderanger/chef-collectd.git",
+        "revision": "f0f1d680d09c12166ea19083c3ffe4e07aa18e99"
+      }
+    },
+    "statsd": {
+      "version": "1.1.12",
+      "identifier": "0e9067ad93e30c33c8c135db2135d6db038740b6",
+      "dotted_decimal_identifier": "4099424642130700.14575955970040117.236236145377462",
+      "cache_key": "statsd-385dd15e38fdd29517a8277a91b5f782c55b51d8",
+      "origin": "git://github.com/hectcastro/chef-statsd.git",
+      "source_options": {
+        "git": "git://github.com/hectcastro/chef-statsd.git",
+        "revision": "385dd15e38fdd29517a8277a91b5f782c55b51d8"
+      }
+    },
+    "rvm": {
+      "version": "0.10.1",
+      "identifier": "76242245678a70b6120de1613f16107f199c6e29",
+      "dotted_decimal_identifier": "33253776863758960.51248296586460950.18138076573225",
+      "cache_key": "rvm-a5e2a746be9db650e2f36d7a23ec05e984e26431",
+      "origin": "git://github.com/fnichol/chef-rvm.git",
+      "source_options": {
+        "git": "git://github.com/fnichol/chef-rvm.git",
+        "revision": "a5e2a746be9db650e2f36d7a23ec05e984e26431"
+      }
+    },
+    "user": {
+      "version": "0.4.2",
+      "identifier": "1998ef8b72a257c31c7dc6fa7e5942439c547427",
+      "dotted_decimal_identifier": "7205029021917783.54918946993372761.72858153022503",
+      "cache_key": "user-fd2094cc8ae76d92ec1906ff1f3ca88b080d3792",
+      "origin": "git://github.com/fnichol/chef-user.git",
+      "source_options": {
+        "git": "git://github.com/fnichol/chef-user.git",
+        "revision": "fd2094cc8ae76d92ec1906ff1f3ca88b080d3792"
+      }
+    },
+    "timezone_lwrp": {
+      "version": "0.1.7",
+      "identifier": "a022c1fbb30e338efaf8de0b55a22988ccc8972b",
+      "dotted_decimal_identifier": "45074212820553267.40245393477031330.45667527989035",
+      "cache_key": "timezone_lwrp-f599c575ab296829319bc2e71f23157cb578fd66",
+      "origin": "git://github.com/hh/timezone_lwrp.git",
+      "source_options": {
+        "git": "git://github.com/hh/timezone_lwrp.git",
+        "revision": "f599c575ab296829319bc2e71f23157cb578fd66",
+        "branch": "patch-1"
+      }
+    },
+    "logrotate": {
+      "version": "1.9.2",
+      "identifier": "6c84d9489464ee3377a6e646864158922326a7b9",
+      "dotted_decimal_identifier": "30545366245205230.14486782523901505.97384678205369",
+      "cache_key": "logrotate-55ca37a145a8c110b66bed3827e254bccf996810",
+      "origin": "git://github.com/opscode-cookbooks/logrotate.git",
+      "source_options": {
+        "git": "git://github.com/opscode-cookbooks/logrotate.git",
+        "revision": "55ca37a145a8c110b66bed3827e254bccf996810"
+      }
+    },
+    "nginx": {
+      "version": "2.7.6",
+      "identifier": "8fcc3cfaf60f6e1a220f184a3158a732fbb1678a",
+      "dotted_decimal_identifier": "40475483950157678.7355797621846360.183837412910986",
+      "cache_key": "nginx-e36944b0dac1f21044a4f0d01fc566023325cfde",
+      "origin": "git://github.com/miketheman/nginx.git",
+      "source_options": {
+        "git": "git://github.com/miketheman/nginx.git",
+        "revision": "e36944b0dac1f21044a4f0d01fc566023325cfde"
+      }
+    },
+    "memcached": {
+      "version": "2.0.3",
+      "identifier": "166a16c8ca1a1738f9420012b22e3268f5a483ae",
+      "dotted_decimal_identifier": "6309095578147351.16036660560179758.55426379187118",
+      "cache_key": "memcached-0f1b29ff052a7408db4e290a5e1035f4e062b8bd",
+      "origin": "git://github.com/opscode-cookbooks/memcached.git",
+      "source_options": {
+        "git": "git://github.com/opscode-cookbooks/memcached.git",
+        "revision": "0f1b29ff052a7408db4e290a5e1035f4e062b8bd"
+      }
+    },
+    "redis": {
+      "version": "2.1.1",
+      "identifier": "572ea32e1605949c08babcae05317159d10e71b8",
+      "dotted_decimal_identifier": "24539601361569172.43919694489322801.124630573412792",
+      "cache_key": "redis-24bb91e9a580091b2ddeaeaf4eaa6d5b6b4f2cb0",
+      "origin": "git://github.com/miah/chef-redis.git",
+      "source_options": {
+        "git": "git://github.com/miah/chef-redis.git",
+        "revision": "24bb91e9a580091b2ddeaeaf4eaa6d5b6b4f2cb0"
+      }
+    },
+    "postgresql": {
+      "version": "4.0.0",
+      "identifier": "b9460d0a49848a75e059622f3c54bdf8ffccae86",
+      "dotted_decimal_identifier": "52149892512580746.33179246779120724.208877141143174",
+      "cache_key": "postgresql-7df755bdc1da7af4ac77e2076ed4703491cf8196",
+      "origin": "git://github.com/hw-cookbooks/postgresql.git",
+      "source_options": {
+        "git": "git://github.com/hw-cookbooks/postgresql.git",
+        "revision": "7df755bdc1da7af4ac77e2076ed4703491cf8196"
+      }
+    },
+    "base": {
+      "version": "0.0.0",
+      "identifier": "0feea9083ede13d1b49fea93c22eff6ac3d7e6f8",
+      "dotted_decimal_identifier": "4484534405881363.59026869060878894.280834017322744",
+      "source": "../site-cookbooks/base",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/base"
+      }
+    },
+    "hosts": {
+      "version": "0.0.0",
+      "identifier": "a99dd8ea0f81b12bdd1ff3678522622ee6f0a2ba",
+      "dotted_decimal_identifier": "47742826029482417.12346553295930658.107953582547642",
+      "source": "../site-cookbooks/hosts",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/hosts"
+      }
+    },
+    "collectd_graphite": {
+      "version": "0.0.0",
+      "identifier": "21c866565d051a4122bc33994ec9bd4a8fbd07dd",
+      "dotted_decimal_identifier": "9509016092607770.18334065201073865.208127936759773",
+      "source": "../site-cookbooks/collectd_graphite",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/collectd_graphite"
+      }
+    },
+    "graphite_all": {
+      "version": "0.0.0",
+      "identifier": "f23ac07c8394f66c284426a7e939d670907088ea",
+      "dotted_decimal_identifier": "68181542761108726.30443570656176441.235778947975402",
+      "source": "../site-cookbooks/graphite_all",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/graphite_all"
+      }
+    },
+    "ruby": {
+      "version": "0.0.0",
+      "identifier": "db9fcb792f91148458258e389c7ed407ab3a8d81",
+      "dotted_decimal_identifier": "61818716159971604.37251615248915582.233129402600833",
+      "source": "../site-cookbooks/ruby",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/ruby"
+      }
+    },
+    "apache_auth": {
+      "version": "0.0.0",
+      "identifier": "0ecd3fb5234ae86e862cb400d07c1e4ad8600639",
+      "dotted_decimal_identifier": "4166323179571944.31109773994807420.33306806584889",
+      "source": "../site-cookbooks/apache_auth",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/apache_auth"
+      }
+    },
+    "iptables": {
+      "version": "0.0.0",
+      "identifier": "5597d0a2a91478c9b3ad636574cd8268330fc887",
+      "dotted_decimal_identifier": "24092295358387320.56774027597149389.143384044882055",
+      "source": "../site-cookbooks/iptables",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/iptables"
+      }
+    },
+    "time": {
+      "version": "0.0.0",
+      "identifier": "8106868a629704533ea150fd19814a770dca8e0b",
+      "dotted_decimal_identifier": "36317446912775940.23431285636405633.81875192942091",
+      "source": "../site-cookbooks/time",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/time"
+      }
+    },
+    "tmate_nginx": {
+      "version": "0.0.0",
+      "identifier": "911c320c1a59fba07fca85979865d26267b39530",
+      "dotted_decimal_identifier": "40844872900041211.45176504075130981.231320088450352",
+      "source": "../site-cookbooks/tmate_nginx",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/tmate_nginx"
+      }
+    },
+    "tmate_slave": {
+      "version": "0.0.0",
+      "identifier": "e91e7d052517df1493658d063908f3c361f387b2",
+      "dotted_decimal_identifier": "65617191879645151.5791563901188360.268020487522226",
+      "source": "../site-cookbooks/tmate_slave",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/tmate_slave"
+      }
+    },
+    "tmate_master": {
+      "version": "0.0.0",
+      "identifier": "867b90989593baccf1b757d022e2e1d07491f820",
+      "dotted_decimal_identifier": "37853507844674490.57686665003541218.248285425170464",
+      "source": "../site-cookbooks/tmate_master",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/tmate_master"
+      }
+    },
+    "tmate_proxy": {
+      "version": "0.0.0",
+      "identifier": "da7e30afb1ba64a5576cab8b893ed204ca52e8ae",
+      "dotted_decimal_identifier": "61500292494113380.46539495403391294.230918016133294",
+      "source": "../site-cookbooks/tmate_proxy",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "git@github.com:tmate-io/tmate-kitchen.git",
+        "revision": "e78dcd53b017e74b02e5837bd70cfd947162a36d",
+        "working_tree_clean": true,
+        "published": true,
+        "synchronized_remote_branches": [
+          "ii/provisioning"
+        ]
+      },
+      "source_options": {
+        "path": "../site-cookbooks/tmate_proxy"
+      }
+    },
+    "hostsfile": {
+      "version": "2.4.5",
+      "identifier": "15e126e37ecaa1d39c549ae001f2a4a12a1844fa",
+      "dotted_decimal_identifier": "6158531652668065.59563107275506162.181012102923514",
+      "cache_key": "hostsfile-2.4.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/hostsfile/versions/2.4.5/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/hostsfile/versions/2.4.5/download",
+        "version": "2.4.5"
+      }
+    },
+    "hostname": {
+      "version": "0.3.0",
+      "identifier": "5b5011153c630da2e4a58e10f638df10f607183c",
+      "dotted_decimal_identifier": "25702257181614861.45850345931339320.245263940130876",
+      "cache_key": "hostname-0.3.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/hostname/versions/0.3.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/hostname/versions/0.3.0/download",
+        "version": "0.3.0"
+      }
+    },
+    "apt": {
+      "version": "2.9.2",
+      "identifier": "aa7652cc9ec61ee4603d984cb5770169987ae0ea",
+      "dotted_decimal_identifier": "47980844033164830.64282112354465143.1553041383658",
+      "cache_key": "apt-2.9.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/apt/versions/2.9.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/apt/versions/2.9.2/download",
+        "version": "2.9.2"
+      }
+    },
+    "git": {
+      "version": "4.3.7",
+      "identifier": "ca0fdd981e8ac0401f617f0970ab70ddb6ffedaf",
+      "dotted_decimal_identifier": "56875389709880000.18048902113095851.124097560309167",
+      "cache_key": "git-4.3.7-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/4.3.7/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/4.3.7/download",
+        "version": "4.3.7"
+      }
+    },
+    "build-essential": {
+      "version": "2.3.1",
+      "identifier": "877c80bb7579e0e15ae81e305021b68e92f30a3b",
+      "dotted_decimal_identifier": "38136014198634976.63431822745292833.200723467012667",
+      "cache_key": "build-essential-2.3.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/2.3.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/2.3.1/download",
+        "version": "2.3.1"
+      }
+    },
+    "simple_iptables": {
+      "version": "0.7.4",
+      "identifier": "5a819d4ae571b6f7bfd147905bdaaebfb9c24882",
+      "dotted_decimal_identifier": "25475260470358454.69735224817245146.192138478504066",
+      "cache_key": "simple_iptables-0.7.4-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/simple_iptables/versions/0.7.4/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/simple_iptables/versions/0.7.4/download",
+        "version": "0.7.4"
+      }
+    },
+    "htpasswd": {
+      "version": "0.2.4",
+      "identifier": "26c3068fc65deae63a70a390ffb429c858a7fd6f",
+      "dotted_decimal_identifier": "10910482064367082.64803500098387892.45940457602415",
+      "cache_key": "htpasswd-0.2.4-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/htpasswd/versions/0.2.4/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/htpasswd/versions/0.2.4/download",
+        "version": "0.2.4"
+      }
+    },
+    "python": {
+      "version": "1.4.6",
+      "identifier": "330376a863f39c1fb409df23fbcc56aa8c981fdd",
+      "dotted_decimal_identifier": "14359031978390428.8923678769413068.95290503208925",
+      "cache_key": "python-1.4.6-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/python/versions/1.4.6/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/python/versions/1.4.6/download",
+        "version": "1.4.6"
+      }
+    },
+    "runit": {
+      "version": "1.7.6",
+      "identifier": "09d43fad354b3efcc5b5836fef5137131f60f974",
+      "dotted_decimal_identifier": "2766644744375102.71149077515988817.60555270355316",
+      "cache_key": "runit-1.7.6-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/runit/versions/1.7.6/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/runit/versions/1.7.6/download",
+        "version": "1.7.6"
+      }
+    },
+    "yum-epel": {
+      "version": "0.6.5",
+      "identifier": "22765b0639c3a9be21981f84952c636f2d27587c",
+      "dotted_decimal_identifier": "9700282526712745.53517182822552876.109329150072956",
+      "cache_key": "yum-epel-0.6.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum-epel/versions/0.6.5/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum-epel/versions/0.6.5/download",
+        "version": "0.6.5"
+      }
+    },
+    "nodejs": {
+      "version": "2.4.4",
+      "identifier": "b687af505227296bb830eaf9b18e9da42f33eda1",
+      "dotted_decimal_identifier": "51377632797927209.30320342748213646.173328492129697",
+      "cache_key": "nodejs-2.4.4-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/2.4.4/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/nodejs/versions/2.4.4/download",
+        "version": "2.4.4"
+      }
+    },
+    "chef_gem": {
+      "version": "0.1.0",
+      "identifier": "17d9d6fdd67839066cf7ebed0c7c23134b7783b0",
+      "dotted_decimal_identifier": "6713441869264953.1808661931166844.38565777474480",
+      "cache_key": "chef_gem-0.1.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_gem/versions/0.1.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_gem/versions/0.1.0/download",
+        "version": "0.1.0"
+      }
+    },
+    "bluepill": {
+      "version": "2.4.2",
+      "identifier": "d0a6516230d688da3e582fd197be38256a8fa060",
+      "dotted_decimal_identifier": "58729663625746056.61430093403232190.61733352743008",
+      "cache_key": "bluepill-2.4.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/bluepill/versions/2.4.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/bluepill/versions/2.4.2/download",
+        "version": "2.4.2"
+      }
+    },
+    "ohai": {
+      "version": "2.1.0",
+      "identifier": "90c2e065e03759403d32422cc633eb98db47213b",
+      "dotted_decimal_identifier": "40746665683990361.18081684577371699.259041746428219",
+      "cache_key": "ohai-2.1.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/2.1.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/2.1.0/download",
+        "version": "2.1.0"
+      }
+    },
+    "compat_resource": {
+      "version": "12.7.3",
+      "identifier": "c23f509abbc40b6f466e8a23d6b0b23d21e2176d",
+      "dotted_decimal_identifier": "54675760907797515.31321162992834224.195975631214445",
+      "cache_key": "compat_resource-12.7.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/compat_resource/versions/12.7.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/compat_resource/versions/12.7.3/download",
+        "version": "12.7.3"
+      }
+    },
+    "yum": {
+      "version": "3.10.0",
+      "identifier": "8129ef7e1e5fd5662b70520fff9cd740016fc68c",
+      "dotted_decimal_identifier": "36356380585517013.28758209037598620.236669901981324",
+      "cache_key": "yum-3.10.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/3.10.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/3.10.0/download",
+        "version": "3.10.0"
+      }
+    },
+    "stunnel": {
+      "version": "2.1.0",
+      "identifier": "22861d8dcee04b4a4db67314632d94feb7dffffc",
+      "dotted_decimal_identifier": "9717610699481163.20914594286691117.163821727514620",
+      "cache_key": "stunnel-2.1.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/stunnel/versions/2.1.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/stunnel/versions/2.1.0/download",
+        "version": "2.1.0"
+      }
+    },
+    "discovery": {
+      "version": "0.2.2",
+      "identifier": "3880c04aca1b2a0190e985e90429ff1a21956c1a",
+      "dotted_decimal_identifier": "15904162072632106.440807625131049.280487697673242",
+      "cache_key": "discovery-0.2.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/discovery/versions/0.2.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/discovery/versions/0.2.2/download",
+        "version": "0.2.2"
+      }
+    },
+    "openssl": {
+      "version": "4.4.0",
+      "identifier": "22a2f3dc3e158a82b10a70d3f786c2da921a5175",
+      "dotted_decimal_identifier": "9749317463971210.36786405373114246.214244009857397",
+      "cache_key": "openssl-4.4.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/openssl/versions/4.4.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/openssl/versions/4.4.0/download",
+        "version": "4.4.0"
+      }
+    },
+    "chef-sugar": {
+      "version": "3.3.0",
+      "identifier": "edbd3c511b641f0f53842a21964a8a422d649799",
+      "dotted_decimal_identifier": "66917636236862495.4313951758292554.152016834041753",
+      "cache_key": "chef-sugar-3.3.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-sugar/versions/3.3.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-sugar/versions/3.3.0/download",
+        "version": "3.3.0"
+      }
+    },
+    "rsyslog": {
+      "version": "4.0.0",
+      "identifier": "12037f101dd21cc3e779421d5b1c31441775e18e",
+      "dotted_decimal_identifier": "5070393846911516.55142128444857116.54168521138574",
+      "cache_key": "rsyslog-4.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/rsyslog/versions/4.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/rsyslog/versions/4.0.0/download",
+        "version": "4.0.0"
+      }
+    },
+    "ark": {
+      "version": "1.0.1",
+      "identifier": "d224cf4ee9484ac850e6f91ca6731687956c9156",
+      "dotted_decimal_identifier": "59150217909979210.56383948294235763.24771583316310",
+      "cache_key": "ark-1.0.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/1.0.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/1.0.1/download",
+        "version": "1.0.1"
+      }
+    },
+    "homebrew": {
+      "version": "2.0.5",
+      "identifier": "4b7f5401bae6e48b209291a5abdda9ac804cb779",
+      "dotted_decimal_identifier": "21250622036305636.39160835643648989.186558351980409",
+      "cache_key": "homebrew-2.0.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/homebrew/versions/2.0.5/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/homebrew/versions/2.0.5/download",
+        "version": "2.0.5"
+      }
+    },
+    "windows": {
+      "version": "1.39.1",
+      "identifier": "0e98019b84499c168f6990c485c03a3dde825ec4",
+      "dotted_decimal_identifier": "4107782345476508.6350133050770880.64037400501956",
+      "cache_key": "windows-1.39.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/1.39.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/1.39.1/download",
+        "version": "1.39.1"
+      }
+    },
+    "seven_zip": {
+      "version": "1.0.4",
+      "identifier": "7efa01387aa527855d416caedab877d78b023e7f",
+      "dotted_decimal_identifier": "35740730215015719.37538707480173240.131767633854079",
+      "cache_key": "seven_zip-1.0.4-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/1.0.4/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/1.0.4/download",
+        "version": "1.0.4"
+      }
+    },
+    "7-zip": {
+      "version": "1.0.2",
+      "identifier": "dec0b1942996ee75b06097ba3f5e65d60e53a135",
+      "dotted_decimal_identifier": "62699313757263598.33126501184061278.111970037768501",
+      "cache_key": "7-zip-1.0.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/7-zip/versions/1.0.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/7-zip/versions/1.0.2/download",
+        "version": "1.0.2"
+      }
+    },
+    "packagecloud": {
+      "version": "0.2.0",
+      "identifier": "2c2e33f828c245e3a9d4ec9deb36d22973e64824",
+      "dotted_decimal_identifier": "12435699716899397.64081551681252150.231075479963684",
+      "cache_key": "packagecloud-0.2.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/packagecloud/versions/0.2.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/packagecloud/versions/0.2.0/download",
+        "version": "0.2.0"
+      }
+    },
+    "dmg": {
+      "version": "2.3.0",
+      "identifier": "dc37a516c04cb700c71d60e7a16ae18c61c29ed7",
+      "dotted_decimal_identifier": "61985677067177143.218928993771882.247993051815639",
+      "cache_key": "dmg-2.3.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/dmg/versions/2.3.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/dmg/versions/2.3.0/download",
+        "version": "2.3.0"
+      }
+    },
+    "chef_handler": {
+      "version": "1.3.0",
+      "identifier": "e43505a45df303a94934a1d3eb4cf0709d172554",
+      "dotted_decimal_identifier": "64234593038758659.47649761466248012.264366462543188",
+      "cache_key": "chef_handler-1.3.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_handler/versions/1.3.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_handler/versions/1.3.0/download",
+        "version": "1.3.0"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "apache_auth": {
+      "htpasswd_file": "/etc/nginx-htpasswd",
+      "user": "user",
+      "password": "password"
+    },
+    "graphite": {
+      "nginx_port": 80,
+      "nginx_htpasswd": "/etc/nginx-htpasswd"
+    },
+    "iptables": {
+      "services": {
+        "ssh": 22,
+        "nginx": 80
+      }
+    }
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "ntp",
+        "= 1.10.1"
+      ],
+      [
+        "graphite",
+        ">= 0.0.0"
+      ],
+      [
+        "collectd",
+        ">= 0.0.0"
+      ],
+      [
+        "statsd",
+        ">= 0.0.0"
+      ],
+      [
+        "rvm",
+        ">= 0.0.0"
+      ],
+      [
+        "user",
+        ">= 0.0.0"
+      ],
+      [
+        "timezone_lwrp",
+        ">= 0.0.0"
+      ],
+      [
+        "logrotate",
+        ">= 0.0.0"
+      ],
+      [
+        "nginx",
+        ">= 0.0.0"
+      ],
+      [
+        "memcached",
+        ">= 0.0.0"
+      ],
+      [
+        "redis",
+        ">= 0.0.0"
+      ],
+      [
+        "postgresql",
+        ">= 0.0.0"
+      ],
+      [
+        "base",
+        ">= 0.0.0"
+      ],
+      [
+        "hosts",
+        ">= 0.0.0"
+      ],
+      [
+        "collectd_graphite",
+        ">= 0.0.0"
+      ],
+      [
+        "graphite_all",
+        ">= 0.0.0"
+      ],
+      [
+        "ruby",
+        ">= 0.0.0"
+      ],
+      [
+        "apache_auth",
+        ">= 0.0.0"
+      ],
+      [
+        "iptables",
+        ">= 0.0.0"
+      ],
+      [
+        "time",
+        ">= 0.0.0"
+      ],
+      [
+        "tmate_nginx",
+        ">= 0.0.0"
+      ],
+      [
+        "tmate_slave",
+        ">= 0.0.0"
+      ],
+      [
+        "tmate_master",
+        ">= 0.0.0"
+      ],
+      [
+        "tmate_proxy",
+        ">= 0.0.0"
+      ],
+      [
+        "hostsfile",
+        "= 2.4.5"
+      ],
+      [
+        "hostname",
+        "= 0.3.0"
+      ],
+      [
+        "apt",
+        "= 2.9.2"
+      ],
+      [
+        "git",
+        "= 4.3.7"
+      ],
+      [
+        "build-essential",
+        "= 2.3.1"
+      ],
+      [
+        "simple_iptables",
+        "= 0.7.4"
+      ],
+      [
+        "htpasswd",
+        "= 0.2.4"
+      ],
+      [
+        "python",
+        "= 1.4.6"
+      ],
+      [
+        "runit",
+        "= 1.7.6"
+      ],
+      [
+        "yum-epel",
+        "= 0.6.5"
+      ],
+      [
+        "nodejs",
+        "= 2.4.4"
+      ],
+      [
+        "chef_gem",
+        "= 0.1.0"
+      ],
+      [
+        "bluepill",
+        "= 2.4.2"
+      ],
+      [
+        "ohai",
+        "= 2.1.0"
+      ],
+      [
+        "compat_resource",
+        "= 12.7.3"
+      ],
+      [
+        "yum",
+        "= 3.10.0"
+      ],
+      [
+        "stunnel",
+        "= 2.1.0"
+      ],
+      [
+        "discovery",
+        "= 0.2.2"
+      ],
+      [
+        "openssl",
+        "= 4.4.0"
+      ],
+      [
+        "chef-sugar",
+        "= 3.3.0"
+      ],
+      [
+        "rsyslog",
+        "= 4.0.0"
+      ],
+      [
+        "ark",
+        "= 1.0.1"
+      ],
+      [
+        "homebrew",
+        "= 2.0.5"
+      ],
+      [
+        "windows",
+        "= 1.39.1"
+      ],
+      [
+        "seven_zip",
+        "= 1.0.4"
+      ],
+      [
+        "7-zip",
+        "= 1.0.2"
+      ],
+      [
+        "packagecloud",
+        "= 0.2.0"
+      ],
+      [
+        "dmg",
+        "= 2.3.0"
+      ],
+      [
+        "chef_handler",
+        "= 1.3.0"
+      ]
+    ],
+    "dependencies": {
+      "hosts (0.0.0)": [
+        [
+          "hostsfile",
+          ">= 0.0.0"
+        ],
+        [
+          "hostname",
+          ">= 0.0.0"
+        ]
+      ],
+      "base (0.0.0)": [
+        [
+          "apt",
+          ">= 0.0.0"
+        ],
+        [
+          "git",
+          ">= 0.0.0"
+        ],
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "user",
+          ">= 0.0.0"
+        ]
+      ],
+      "time (0.0.0)": [
+        [
+          "ntp",
+          ">= 0.0.0"
+        ],
+        [
+          "timezone_lwrp",
+          ">= 0.0.0"
+        ]
+      ],
+      "iptables (0.0.0)": [
+        [
+          "simple_iptables",
+          ">= 0.0.0"
+        ]
+      ],
+      "apache_auth (0.0.0)": [
+        [
+          "htpasswd",
+          ">= 0.0.0"
+        ]
+      ],
+      "graphite_all (0.0.0)": [
+        [
+          "graphite",
+          ">= 0.0.0"
+        ],
+        [
+          "nginx",
+          ">= 0.0.0"
+        ],
+        [
+          "statsd",
+          ">= 0.0.0"
+        ],
+        [
+          "memcached",
+          ">= 0.0.0"
+        ]
+      ],
+      "ntp (1.10.1)": [
+        [
+          "windows",
+          ">= 0.0.0"
+        ]
+      ],
+      "graphite (1.0.4)": [
+        [
+          "python",
+          ">= 0.0.0"
+        ],
+        [
+          "runit",
+          "~> 1.0"
+        ],
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ]
+      ],
+      "collectd (1.0.0)": [
+
+      ],
+      "statsd (1.1.12)": [
+        [
+          "git",
+          ">= 0.0.0"
+        ],
+        [
+          "nodejs",
+          ">= 0.0.0"
+        ],
+        [
+          "runit",
+          ">= 0.0.0"
+        ]
+      ],
+      "rvm (0.10.1)": [
+        [
+          "chef_gem",
+          ">= 0.0.0"
+        ]
+      ],
+      "user (0.4.2)": [
+
+      ],
+      "timezone_lwrp (0.1.7)": [
+
+      ],
+      "logrotate (1.9.2)": [
+
+      ],
+      "nginx (2.7.6)": [
+        [
+          "apt",
+          "~> 2.2"
+        ],
+        [
+          "bluepill",
+          "~> 2.3"
+        ],
+        [
+          "build-essential",
+          "~> 2.0"
+        ],
+        [
+          "ohai",
+          "~> 2.0"
+        ],
+        [
+          "runit",
+          "~> 1.2"
+        ],
+        [
+          "yum-epel",
+          "~> 0.3"
+        ]
+      ],
+      "memcached (2.0.3)": [
+        [
+          "runit",
+          "~> 1.0"
+        ],
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ],
+        [
+          "compat_resource",
+          ">= 0.0.0"
+        ]
+      ],
+      "redis (2.1.1)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "runit",
+          ">= 0.0.0"
+        ],
+        [
+          "yum",
+          ">= 0.0.0"
+        ],
+        [
+          "stunnel",
+          ">= 2.0.0"
+        ],
+        [
+          "discovery",
+          ">= 0.2.0"
+        ]
+      ],
+      "postgresql (4.0.0)": [
+        [
+          "apt",
+          ">= 1.9.0"
+        ],
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "openssl",
+          "~> 4.0"
+        ]
+      ],
+      "collectd_graphite (0.0.0)": [
+        [
+          "apt",
+          ">= 0.0.0"
+        ],
+        [
+          "collectd",
+          ">= 0.0.0"
+        ]
+      ],
+      "ruby (0.0.0)": [
+        [
+          "git",
+          ">= 0.0.0"
+        ],
+        [
+          "rvm",
+          ">= 0.0.0"
+        ]
+      ],
+      "tmate_nginx (0.0.0)": [
+        [
+          "nginx",
+          ">= 0.0.0"
+        ]
+      ],
+      "tmate_slave (0.0.0)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ]
+      ],
+      "tmate_master (0.0.0)": [
+
+      ],
+      "tmate_proxy (0.0.0)": [
+
+      ],
+      "hostsfile (2.4.5)": [
+
+      ],
+      "hostname (0.3.0)": [
+        [
+          "hostsfile",
+          ">= 0.0.0"
+        ]
+      ],
+      "apt (2.9.2)": [
+
+      ],
+      "git (4.3.7)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "dmg",
+          ">= 0.0.0"
+        ],
+        [
+          "windows",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ]
+      ],
+      "build-essential (2.3.1)": [
+        [
+          "7-zip",
+          ">= 0.0.0"
+        ]
+      ],
+      "simple_iptables (0.7.4)": [
+
+      ],
+      "htpasswd (0.2.4)": [
+        [
+          "python",
+          ">= 0.0.0"
+        ]
+      ],
+      "python (1.4.6)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ]
+      ],
+      "runit (1.7.6)": [
+        [
+          "packagecloud",
+          ">= 0.0.0"
+        ]
+      ],
+      "yum-epel (0.6.5)": [
+        [
+          "yum",
+          "~> 3.2"
+        ]
+      ],
+      "nodejs (2.4.4)": [
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ],
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "ark",
+          ">= 0.0.0"
+        ],
+        [
+          "apt",
+          ">= 0.0.0"
+        ],
+        [
+          "homebrew",
+          ">= 0.0.0"
+        ]
+      ],
+      "chef_gem (0.1.0)": [
+
+      ],
+      "bluepill (2.4.2)": [
+        [
+          "rsyslog",
+          ">= 2.0.0"
+        ]
+      ],
+      "ohai (2.1.0)": [
+
+      ],
+      "compat_resource (12.7.3)": [
+
+      ],
+      "yum (3.10.0)": [
+
+      ],
+      "stunnel (2.1.0)": [
+
+      ],
+      "discovery (0.2.2)": [
+
+      ],
+      "openssl (4.4.0)": [
+        [
+          "chef-sugar",
+          ">= 3.1.1"
+        ]
+      ],
+      "chef-sugar (3.3.0)": [
+
+      ],
+      "rsyslog (4.0.0)": [
+        [
+          "compat_resource",
+          ">= 0.0.0"
+        ]
+      ],
+      "ark (1.0.1)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "windows",
+          ">= 0.0.0"
+        ],
+        [
+          "seven_zip",
+          ">= 0.0.0"
+        ]
+      ],
+      "homebrew (2.0.5)": [
+        [
+          "build-essential",
+          ">= 2.1.2"
+        ]
+      ],
+      "windows (1.39.1)": [
+        [
+          "chef_handler",
+          ">= 0.0.0"
+        ]
+      ],
+      "seven_zip (1.0.4)": [
+        [
+          "windows",
+          ">= 1.2.2"
+        ]
+      ],
+      "7-zip (1.0.2)": [
+        [
+          "windows",
+          ">= 1.2.2"
+        ]
+      ],
+      "packagecloud (0.2.0)": [
+
+      ],
+      "dmg (2.3.0)": [
+
+      ],
+      "chef_handler (1.3.0)": [
+
+      ]
+    }
+  }
+}
